@@ -42,8 +42,35 @@ class Queue
 end
 
 
+class Map
+  attr_accessor :dictionary
 
+  def initialize
+    @dictionary = []
+  end
 
+  def assign(key, val)
+    remove(key)
+    dictionary << [key, val]
+  end
 
+  def lookup(key)
+    dictionary.each do |k, v|
+      if k == key
+        return v 
+      end
+    end
+    nil
+  end
 
+  def remove(key)
+    dictionary.each do |k, v|
+      if k == key
+        dictionary.delete([k, lookup(k)])
+      end
+    end
+
+  end
+
+end
 
